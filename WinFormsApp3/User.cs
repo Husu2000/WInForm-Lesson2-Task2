@@ -1,4 +1,6 @@
-﻿namespace WinFormsApp3;
+﻿using System.Text.RegularExpressions;
+
+namespace WinFormsApp3;
 
 public class User
 {
@@ -38,17 +40,39 @@ public class User
         set { if (value.Length < 3 && value.Length > 20) throw new Exception("City length must 3/20"); City_ = value; } 
     }
 
-    private int Phone_;
-    public int Phone { 
-        get { } 
-        set { } 
+    private string _phone;
+
+    public string Phone
+    {
+        get { return _phone; }
+        set { if (Regex.IsMatch(value, "^\\+994(\\s?\\d){9}$")) _phone = value; else throw new Exception("phone number is wrong"); }
     }
 
     public DateTime dateTime_;
 
     public string Gender_;
 
+    public User(string name,string surname,string country,string profession,string city,string phone,DateTime date,string gender) 
+    {
+        Name=name;
+        Surname=surname;
+        Country=country;
+        Profession=profession;
+        City=city;
+        Phone=phone;
+        dateTime_ = date;
+        this.Gender_=gender;
 
-        
+    }
+    public User()
+    {
+        Name_=string.Empty;
+        Surname_=string.Empty;
+        _phone=string.Empty;
+        City_=string.Empty;
+        Gender_=string.Empty;
+        dateTime_=new();
+
+    }
 
 }
