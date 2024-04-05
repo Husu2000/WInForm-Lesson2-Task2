@@ -4,75 +4,77 @@ namespace WinFormsApp3;
 
 public class User
 {
-    private string Name_;
+    private string _name;
 
     public string Name
     {
-        get { return Name_; }
-        set { if (value.Length < 3 && value.Length > 20) throw new Exception("name length must 3/20"); Name_ = value; }
+        get;
+        set;
     }
-
-    private string Surname_;
+    private string _surname;
 
     public string Surname
     {
-        get { return Surname_; }
-        set { if (value.Length < 3 && value.Length > 20) throw new Exception("surname length must 3/20"); Surname_ = value; }
+        get;
+        set;
     }
 
-    private string Profession_;
+    private string _country;
+    public string Country
+    {
+        get;
+        set;
+    }
+
+    private string profession;
+
     public string Profession
     {
-        get { return Profession_; }
-        set { if (value.Length < 3 && value.Length > 20) throw new Exception("Profession length must 3/20"); Profession_ = value; }
+        get;
+        set;
     }
 
-    private string Country_;
-    public string Country {
-        get { return Country_; }
-        set{ if (value.Length < 3 && value.Length > 20) throw new Exception("Conuntry length must 3/20"); Country_ = value; } 
+    private string _city;
+    public string City
+    {
+        get;
+        set;
     }
 
-
-    private string City_;
-    public string City {
-        get {return City_;}
-        set { if (value.Length < 3 && value.Length > 20) throw new Exception("City length must 3/20"); City_ = value; } 
-    }
 
     private string _phone;
-
     public string Phone
     {
-        get { return _phone; }
-        set { if (Regex.IsMatch(value, "^\\+994(\\s?\\d){9}$")) _phone = value; else throw new Exception("phone number is wrong"); }
+        get; set;
     }
 
-    public DateTime dateTime_;
+    public DateTime Date { get; set; }
+    public string male { get; set; }
 
-    public string Gender_;
-
-    public User(string name,string surname,string country,string profession,string city,string phone,DateTime date,string gender) 
+    public User(string name, string surname, string country, string profession, string city, string phone, DateTime date, string male)
     {
-        Name=name;
-        Surname=surname;
-        Country=country;
-        Profession=profession;
-        City=city;
-        Phone=phone;
-        dateTime_ = date;
-        this.Gender_=gender;
-
+        Name = name;
+        Surname = surname;
+        Country = country;
+        Profession = profession;
+        City = city;
+        Phone = phone;
+        Date = date;
+        this.male = male;
     }
     public User()
     {
-        Name_=string.Empty;
-        Surname_=string.Empty;
-        _phone=string.Empty;
-        City_=string.Empty;
-        Gender_=string.Empty;
-        dateTime_=new();
+        _name = string.Empty;
+        _surname = string.Empty;
+        _phone = string.Empty;
+        _city = string.Empty;
+        male = string.Empty;
+        Date = new();
+    }
 
+    public override string ToString()
+    {
+        return $"Name: {Name}\nSurname: {Surname}\nProfession: {Profession}\nCountry: {Country}\nCity: {City}\nPhone: {Phone}\nDate: {Date}\nMale: {male}";
     }
 
 }
